@@ -1,2 +1,3 @@
-class CocktailRecipe < ActiveRecord::Base
+class CocktailRecipe < ActiveRecord::Base 
+    belongs_to :user
 end
