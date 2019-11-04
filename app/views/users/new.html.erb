@@ -1,1 +1,17 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<body> 
+    <h2> Welcome to Chris's Cocktail Collection</h2>
+        <div class="content">
+    <p>Enter a username, email, and password to sign up:</p>
+        </div>
+    <form action="/users" method="POST">
+      <input type="text" name="username" placeholder="Username:">
+      <input type="text" name="email" placeholder='Email Address:'>
+      <input type="password" name="password" placeholder="Password:">
+      <input type="submit" value="submit">
+    </form>
+     <nav> 
+        <a href="/">Welcome Page</a> 
+        <a href="/login">Login Page</a> 
+    </nav> 
+
+  </body>

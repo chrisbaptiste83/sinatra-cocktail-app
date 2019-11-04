@@ -11,9 +11,11 @@ class UsersController < ApplicationController
   end
 
   # POST: /users
-  post "/users" do
-    redirect "/users"
-  end
+  post "/users" do 
+    @user = User.create(username: params[:username], email: params[:email], password: params[:password]) 
+    @user.save
+    erb :"/users/index.html"
+  end 
 
   # GET: /users/5
   get "/users/:id" do
