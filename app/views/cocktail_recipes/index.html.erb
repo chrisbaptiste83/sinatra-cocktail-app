@@ -2,11 +2,11 @@
 	
 <% @cocktail_recipes.each do |cocktail_recipe| %>
 
-<a href="/cocktail_recipes/<%=cocktail_recipe.id%>">
-    <%=cocktail_recipe.ingredients%> <br></a>
-    <br>
+<h1><a href="/cocktail_recipes/<%=cocktail_recipe.id%>"><%=cocktail_recipe.cocktail_name%></a></h1>
+   
+    <br><%=cocktail_recipe.ingredients%> <br>
     <%=cocktail_recipe.instructions%><br>
-    <%=fetish.artist%> <br />
+
 <br>
 <br>   
 <% end %>

@@ -1,4 +1,5 @@
 require './config/environment'
+require 'sinatra' 
 
 class ApplicationController < Sinatra::Base
 
@@ -7,7 +8,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views' 
     enable :sessions
 		set :session_secret, "password_security"
-  end
+
 
   get "/" do
     erb :welcome
@@ -15,10 +16,18 @@ class ApplicationController < Sinatra::Base
 
   
 
-  get "/signup" do 
-    erb :"users/new.html" 
-  end  
+  helpers do
+   
+        def logged_in?
+        !!session[:user_id]
+        end
 
+        def current_user #possible change
+          User.find_by(:id => session[:user_id]) 
+        end
+  
+    end
 
+  end
 
-end
+end 
