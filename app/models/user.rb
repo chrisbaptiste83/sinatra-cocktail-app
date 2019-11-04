@@ -3,5 +3,5 @@ class User < ActiveRecord::Base
     validates_presence_of :username, :email, :password
     validates :username, :uniqueness => {:case_sensitive => false}
      
-    has_many :cocktsil_recipes
+    has_many :cocktail_recipes
 end

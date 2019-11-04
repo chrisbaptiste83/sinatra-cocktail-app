@@ -2,36 +2,74 @@ class CocktailRecipesController < ApplicationController
 
   # GET: /cocktail_recipes
   get "/cocktail_recipes" do
-    erb :"/cocktail_recipes/index.html"
+    if logged_in?
+      @user = current_user 
+      @cocktail_recipes = CocktailRecipe.all
+      erb :"/cocktail_recipes/index.html"
+     else
+      redirect to '/login'
+    end
   end
 
   # GET: /cocktail_recipes/new
-  get "/cocktail_recipes/new" do
-    erb :"/cocktail_recipes/new.html"
+  get "/cocktail_recipes/new" do 
+    if logged_in?
+      erb :"/cocktail_recipes/new.html"
+    else
+      redirect to '/login'
+    end
   end
 
   # POST: /cocktail_recipes
-  post "/cocktail_recipes" do
-    redirect "/cocktail_recipes"
-  end
+    post "/cocktail_recipes" do 
+    if params[:cocktail_recipe] == "" 
+      erb :"cocktail_recipes/new.html"
+    else
+     @cocktail_recipe = CocktailRecipe.create(params)
+     @cocktail_recipe.user = current_user 
+     @cocktail_recipe.save
+     redirect "/cocktail_recipes/#{@cocktail_recipe.id}"
+      end
+    end
+
 
   # GET: /cocktail_recipes/5
-  get "/cocktail_recipes/:id" do
+  get "/cocktail_recipes/:id" do 
+    @cocktail_recipe = CocktailRecipe.find(params[:id]) 
     erb :"/cocktail_recipes/show.html"
   end
-
+   
   # GET: /cocktail_recipes/5/edit
-  get "/cocktail_recipes/:id/edit" do
-    erb :"/cocktail_recipes/edit.html"
-  end
+  get "/cocktail_recipes/:id/edit" do 
+    @coktail_recipe = CocktailRecipe.find(params[:id])
+               
+         if @coktail_recipe.user == current_user 
+            erb :'/cocktail_recipes/edit.html' 
+         else
+          redirect "/cocktail_recipes"
+        end
+      end
 
   # PATCH: /cocktail_recipes/5
-  patch "/cocktail_recipes/:id" do
-    redirect "/cocktail_recipes/:id"
-  end
+  patch "/cocktail_recipes/:id" do 
+    @coktail_recipe = current_user.cocktail_recipes.find(params[:id])
+        if params[:cocktail_recipe] != ""
+          @cocktail_recipe.update(params[:cocktail_recipe])
+          redirect "/cocktail_recipes"
+        else
+          redirect "/cocktail_recipes/#{@cocktail_recipe.id}/edit"
+        end
+     end
 
   # DELETE: /cocktail_recipes/5/delete
-  delete "/cocktail_recipes/:id/delete" do
-    redirect "/cocktail_recipes"
-  end
+  delete "/cocktail_recipes/:id/delete" do 
+    @coktail_recipe = CocktailRecipe.find(params[:id])
+          if @coktail_recipe.owner_id == current_user.id
+            @@coktail_recipe.destroy
+            redirect "/cocktail_recipes"
+          else
+            redirect "/cocktail_recipes"
+         end
+        end
+   
 end

@@ -1,2 +1,14 @@
-<h1>Hello <%=@user.username%>!</h1>
+<h1>Cocktail Recipes</h1> 
+	
+<% @cocktail_recipes.each do |cocktail_recipe| %>
+
+<a href="/cocktail_recipes/<%=cocktail_recipe.id%>">
+    <%=cocktail_recipe.ingredients%> <br></a>
+    <br>
+    <%=cocktail_recipe.instructions%><br>
+    <%=fetish.artist%> <br />
+<br>
+<br>   
+<% end %>
+
 

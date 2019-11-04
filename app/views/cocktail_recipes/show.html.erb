@@ -1,1 +1,14 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1>Cocktail Recipes</h1>
+	<ul>
+ 	
+ 	 <li> 
+ 	 	<%= @cocktail_recipe.cocktail_name%><br></a>
+ 	 	<br>
+ 	 	<%= @cocktail_recipe.ingredients%><br>
+ 	 	<%= @cocktail_recipe.instructions%></li>
+ 	 <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/edit">Edit</a>
+ 	</ul>
+  	 <br />
+ 	 <br />
+
+ 	  

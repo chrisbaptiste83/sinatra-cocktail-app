@@ -1,1 +1,32 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1><b> Edit Cocktail Recipe </b></h1>
+
+    <form method="POST" action="/cocktail_recipes/<%=@cocktail_recipe.id%>">
+    <input id="hidden" type="hidden" name="_method" value="PATCH">
+    </br>
+
+    <label> Animal </label>
+    <input type="text" name="fetish[animal]" value="<%= @fetish.animal%>"> </br> 
+
+    <label> Material </label>
+    <input type="text" name="fetish[material]" value="<%= @fetish.material%>"> </br>
+
+    <label> Artist </label>
+    <input type="text" name="fetish[artist]" value="<%= @fetish.artist%>"> </br>
+
+    <label> Purchase Date </label>
+    <input type="date" name="fetish[purchase_date]" value="<%= @fetish.purchase_date%>"> </br>
+
+    <label> Purchase Price </label>
+    <input type="integer" name="fetish[purchase_price]" value="<%= @fetish.purchase_price%>"> </br>
+    
+    <br>
+    <input id= "fetish" type="submit" value="Submit Changes">
+    <br>
+     <br>
+ </form>
+     
+
+    <form method="POST" action="/fetishes/<%=@fetish.id%>/delete">
+        <input id="hidden" type="hidden" name="_method" value="DELETE">
+            <a><input type="submit" value="Delete Fetish" id="Delete Fetish"></a>
+        </form>
