@@ -2,16 +2,24 @@ class CocktailRecipesController < ApplicationController
 
   # GET: /cocktail_recipes
   get "/cocktail_recipes" do
-   
-    
+    if logged_in?
+      @owner = current_user 
       @cocktail_recipes = CocktailRecipe.all
-      erb :"/cocktail_recipes/index.html"
+      erb :"/cocktail_recipes/index.html" 
+    else 
+      
+      redirect to '/login'
+    end
 
   end
 
   # GET: /cocktail_recipes/new
   get "/cocktail_recipes/new" do 
+    if logged_in?
       erb :"/cocktail_recipes/new.html"  
+    else
+      redirect to '/login'
+    end
   end
 
   # POST: /cocktail_recipes

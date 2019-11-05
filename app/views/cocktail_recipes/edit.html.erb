@@ -3,22 +3,20 @@
     <form method="POST" action="/cocktail_recipes/<%=@cocktail_recipe.id%>">
     <input id="hidden" type="hidden" name="_method" value="PATCH">
     </br>
-
-    <label> Cocktail Name</label>
+    <br>
+    <label><h2>Cocktail Name:</h2></label>
     <input type="text" name="cocktail_recipe[cocktail_name]" value="<%= @cocktail_recipe.cocktail_name%>"> </br> 
-
-    <label> Ingredients </label>
+    <br>
+    <label><h2>Ingredients:</h2></label>
     <input type="text" name="cocktail_recipe[ingredients]" value="<%= @cocktail_recipe.ingredients%>"> </br>
-
-    <label> Intrsuctions </label>
+    <br>
+    <label><h2>Instructions:</h2></label>
     <input type="text" name="cocktail_recipe[instructions]" value="<%=@cocktail_recipe.instructions%>"> </br>
-    
     <br>
     <input id= "cocktail_recipe" type="submit" value="Submit Changes">
-    <br>
-     <br>
+    
  </form>
-     
+     <br>
 
     <form method="POST" action="/cocktail_recipes/<%=@cocktail_recipe.id%>/delete">
         <input id="hidden" type="hidden" name="_method" value="DELETE">

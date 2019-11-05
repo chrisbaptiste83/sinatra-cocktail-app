@@ -4,6 +4,17 @@ class UsersController < ApplicationController
 
   use Rack::Flash
 
+  get "/user" do #read; see all items
+    if logged_in?
+      @user = current_user 
+      @cocktail_recipes = CocktailRecipe.all
+      erb :"users/index.html"
+     else
+      redirect to '/login'
+    end
+  end
+
+
   get '/signup' do 
     if logged_in?
       redirect to "/cocktail_recipes"
@@ -29,7 +40,7 @@ end
 
 get "/login" do 
   if logged_in?
-    redirect to "/cocktail_recipes"
+    redirect to "/user"
   else
   erb :login 
   end 
@@ -40,7 +51,7 @@ end
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect to '/cocktail_recipes'
+      redirect to '/user'
     else
       flash[:message] = "Your username or password is incorrect. Please try again."
        redirect to '/signup'
@@ -50,7 +61,7 @@ end
 get '/logout' do
   if logged_in?
     session.destroy
-    redirect to '/login'
+    redirect to '/'
   else
     redirect '/cocktail_recipes'
   end
