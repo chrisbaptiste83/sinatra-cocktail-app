@@ -29,7 +29,7 @@ class CocktailRecipesController < ApplicationController
     else
      @cocktail_recipe = CocktailRecipe.create(params)
      @cocktail_recipe.user = current_user 
-     @cocktail_recipe.save
+     @cocktail_recipe.save 
      redirect "/cocktail_recipes/#{@cocktail_recipe.id}"
       end
     end
