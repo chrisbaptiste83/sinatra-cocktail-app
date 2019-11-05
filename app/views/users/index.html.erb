@@ -1,4 +1,8 @@
-<h1>Hello <%=@user.username%>!</h1> 
+<h3><% if flash.has?(:message) %>
+<%= flash[:message] %>
+<% end %></h3> 
+
+ <h1>Hello <%=@user.username%>!</h1> 
 <h2>Your Recipes:</h2> 
 <% @user.cocktail_recipes.each do |cocktail_recipe| %>
 

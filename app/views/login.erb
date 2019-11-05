@@ -1,3 +1,9 @@
+<!DOCTYPE html> 
+
+<h3><% if flash.has?(:message) %>
+<%= flash[:message] %>
+<% end %></h3>
+
 <h1>Log In</h1>
 <div class="content">
 <h2>Enter your username and password to log in:</h2> 

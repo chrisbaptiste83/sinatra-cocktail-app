@@ -1,4 +1,8 @@
-<h1><%= @cocktail_recipe.cocktail_name%></h1>
+<h3><% if flash.has?(:message) %>
+<%= flash[:message] %>
+<% end %></h3> 
+
+<h1><%= @cocktail_recipe.cocktail_name%></h1> 
 	<ul>
  	
  	 <li> 

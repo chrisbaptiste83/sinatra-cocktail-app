@@ -33,7 +33,8 @@ class UsersController < ApplicationController
    else
       @user = User.create(params)
       @user.save
-      session[:user_id] = @user.id
+      session[:user_id] = @user.id 
+      flash[:message] = "Your account has been succesfully created!"
       erb :"/users/index.html"
   end
 end 
@@ -54,7 +55,7 @@ end
       redirect to '/user'
     else
       flash[:message] = "Your username or password is incorrect. Please try again."
-       redirect to '/signup'
+       redirect to '/login'
     end
 end
 
@@ -63,7 +64,7 @@ get '/logout' do
     session.destroy
     redirect to '/'
   else
-    redirect '/cocktail_recipes'
+    redirect '/login'
   end
 end
 

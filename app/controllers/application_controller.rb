@@ -1,5 +1,5 @@
 require './config/environment'
-require 'sinatra' 
+#require 'sinatra' 
 
 class ApplicationController < Sinatra::Base
 
@@ -22,7 +22,7 @@ class ApplicationController < Sinatra::Base
         !!session[:user_id]
         end
 
-        def current_user #possible change
+        def current_user 
           User.find_by(:id => session[:user_id]) 
         end
   
