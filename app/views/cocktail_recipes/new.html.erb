@@ -1,27 +1,29 @@
 
 
-<h1>Create a New Cocktail Recipe</h1> 
+<p><h1>Create a New Cocktail Recipe</h1></p> 
 
-	 <form action="/cocktail_recipes" method="POST">
+	  <form action="/cocktail_recipes" method="POST">
 
-    <label> <h2>Cocktail Name:</h2></label>
-    <input type="text" name="cocktail_name" id="cocktail_name"></br>
-    <br>
-    <label><h2> Ingredients:</h2></label>
-    
-    <textarea name="ingredients" cols="60" rows="8" id ="ingredients"></textarea>
-    </br> 
-    <br>
+    <p>
+      <label for "cocktail name"><h2>Cocktail Name:</h2></label>
+      <input type="text" name="cocktail_name" id="cocktail_name"></br>
+    </p> 
+    <p>
+      <label for= "ingredients"><h2> Ingredients:</h2></label>
+      <textarea name="ingredients" cols="60" rows="8" id ="ingredients"></textarea>
+    </p> 
+    <p>
+      <label for ="ingredients"><h2>Instructions:<h2></label>
+      <input type="text" name="instructions" id="instructions"> </br>
+    <p> 
 
-    <label> <h2>Instructions: <h2></label>
-    <input type="text" name="instructions" id="instructions"> </br>
-    <br>
-    <input type="submit" value="Create">
+    <input type="submit" value="Create Cocktail Recipe">
       </form> 
 
-      <br>
+      <p> 
+        <ul>
       <h3><a href="/logout">Log Out<a> </h3>
-      <br> 
-      <h3><a href="/user">My Profile Page</a><br><br></h3> 
-      <h3><a href="/cocktail_recipes">View all Cocktails</a></h3> <br>
-      <br>
+      <h3><a href="/user">My Profile Page</a></h3> 
+      <h3><a href="/cocktail_recipes">View all Cocktails</a></h3> 
+        </ul>
+      </p>
