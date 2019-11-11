@@ -1,8 +1,8 @@
 <h1>Cocktail Recipes:</h1> 
 
         <% @cocktail_recipes.each do |cocktail_recipe| %>
-        <p><h2><a href="/cocktail_recipes/<%=cocktail_recipe.id%>"><%=cocktail_recipe.cocktail_name%></a></h2>
-        <%=cocktail_recipe.ingredients%></p>
+        <p><br><h2><a href="/cocktail_recipes/<%=cocktail_recipe.id%>"><%=cocktail_recipe.cocktail_name%></a></h2></br>
+        <h3><%=cocktail_recipe.ingredients%></h3></p>
         <% end %> 
     
     
