@@ -2,12 +2,13 @@
 
   <p><h2>Your Recipes:</h2></p>  
     
-      <ul>
+      
         <% @user.cocktail_recipes.each do |cocktail_recipe| %> 
-        <h3> <a href="/cocktail_recipes/<%=cocktail_recipe.id%>">
-        <%=cocktail_recipe.cocktail_name%></a></h3>
+       <br><h3> <a href="/cocktail_recipes/<%=cocktail_recipe.id%>">
+        <%=cocktail_recipe.cocktail_name%></a></h3></br>
+        <br>
         <% end %> 
-      </ul>
+      
 
   <p><h2>What would you like to do?</h2></p> 
  
