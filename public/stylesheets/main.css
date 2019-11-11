@@ -32,11 +32,14 @@
       width: 75%;		
     }	
     a {	
-      background-color:black;
+      background-color:black; 
       color:white;
       padding: 1em 1.5em;
       text-decoration: none;
-      
+    } 
+
+    a:hover {
+      background-color: #555;
     }
 
  
