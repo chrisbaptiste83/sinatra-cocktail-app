@@ -1,8 +1,4 @@
-require 'rack-flash'
-
 class UsersController < ApplicationController 
-
-  use Rack::Flash
 
   get "/user" do #read; see all items
     if logged_in?

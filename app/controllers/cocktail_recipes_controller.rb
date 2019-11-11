@@ -1,9 +1,4 @@
-require 'rack-flash'
-
 class CocktailRecipesController < ApplicationController
-
-
-  use Rack::Flash
   # GET: /cocktail_recipes
   get "/cocktail_recipes" do
     if logged_in?
