@@ -1,20 +1,14 @@
+<h1>Cocktail Recipes:</h1> 
 
-
-<h1>Cocktail Recipes</h1> 
-	
-<% @cocktail_recipes.each do |cocktail_recipe| %>
-
-<h1><a href="/cocktail_recipes/<%=cocktail_recipe.id%>"><%=cocktail_recipe.cocktail_name%></a></h1>
-   
-    <br><%=cocktail_recipe.ingredients%> <br>
-    <%=cocktail_recipe.instructions%><br>
-
-<br>
-<br>   
-<% end %>
-<br>
-      <a href="/logout">Log Out<a> 
-      <br> 
-      <a href="/user">My Profile Page</a><br><br> 
-      <a href="/cocktail_recipes/new">Create a Cocktail</a><br><br> 
-      <br>
+        <% @cocktail_recipes.each do |cocktail_recipe| %>
+        <p><h2><a href="/cocktail_recipes/<%=cocktail_recipe.id%>"><%=cocktail_recipe.cocktail_name%></a></h2>
+        <%=cocktail_recipe.ingredients%></p>
+        <% end %> 
+    
+    
+        <ul>
+            <h3><a href="/logout">Log Out<a></h3> 
+            <h3><a href="/user">My Profile Page</a></h3>
+            <h3><a href="/cocktail_recipes/new">Create a Cocktail</a></h3>
+        </ul> 
+        
