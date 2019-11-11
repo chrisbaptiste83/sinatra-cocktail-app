@@ -44,7 +44,7 @@ class CocktailRecipesController < ApplicationController
   # GET: /cocktail_recipes/5/edit
   get "/cocktail_recipes/:id/edit" do 
     @cocktail_recipe = CocktailRecipe.find(params[:id])
-               
+            
          if @cocktail_recipe.user == current_user 
             erb :'/cocktail_recipes/edit.html' 
          else 
