@@ -17,6 +17,18 @@
 
   <body>
     <div class="wrapper"> 
+      <nav> 
+        <% if logged_in? %>
+          <a href="/user">My Profile Page</a>
+          <a href="/cocktail_recipes/new">Create a Cocktail</a>
+          <a href="/cocktail_recipes">View Cocktail Recipes</a>
+          <a href="/logout">Log Out<a></h3> 
+        <% else %> 
+          <a href="/login">Log In</a> 
+          <a href="/signup">Sign Up</a>
+          <% end %>
+
+      </nav>
 
     <h3><% if flash.has?(:message) %>
     <%= flash[:message] %>
