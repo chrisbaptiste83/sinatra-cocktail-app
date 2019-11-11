@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+
+<!DOCTYPE html> 
+
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
@@ -12,10 +14,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
-   
   </head>
+
   <body>
-    <div class="wrapper">
+    <div class="wrapper"> 
+
+    <h3><% if flash.has?(:message) %>
+    <%= flash[:message] %>
+    <% end %></h3> 
 
         <%= yield %> 
        
