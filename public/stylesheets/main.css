@@ -31,14 +31,17 @@
       padding: 3.5%; /* 18px / 800px */		
       width: 75%;		
     }	
-    .buttonwrapper {	
-    background: rgb(94, 89, 89);
-    width: 100%; 
+    a {	
+      background-color:black;
+      color:white;
+      padding: 1em 1.5em;
+      text-decoration: none;
+      
     }
 
  
      h1 { 		
-      font-size: 36px;		
+      font-size: 42px;		
       line-height: 54px;		
     }		
  
