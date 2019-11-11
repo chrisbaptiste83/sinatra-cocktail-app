@@ -1,26 +1,21 @@
-
-
 <h1><%= @cocktail_recipe.cocktail_name%></h1> 
-	<ul>
- 	
- 	 <li> 
- 	 	<p>Ingredients:</p>
-          <%= @cocktail_recipe.ingredients%><br> 
-          <br><p>Instructions:</p>
-          <%= @cocktail_recipe.instructions%></li> 
-          <br>
-      <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/edit">Edit</a
-      <br> 
-      <br>
-      <a href="/logout">Log Out<a> 
-      <br> 
-      <a href="/user">My Profile Page</a><br><br> 
-      <br>
-      <a href="/cocktail_recipes">View Cocktail Recipes<a> 
-      <br> 
-     </ul>
-     </li>
-  	 <br />
- 	 <br />
+
+ 	 	<p><h2>Ingredients:</h2></p>
+          <p><h3><%= @cocktail_recipe.ingredients%></h3></p>
+
+          <p><h2>Instructions:</h2></p>
+          <p><h3><%= @cocktail_recipe.instructions%></h3></p>
+
+          
+
+        <p><a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/edit"><h3>Edit This Recipe</h3></a></p> 
+
 
  	  
+        <ul>
+            <h3><a href="/logout">Log Out<a></h3> 
+            <h3><a href="/user">My Profile Page</a></h3>
+            <h3><a href="/cocktail_recipes/new">Create a Cocktail</a></h3> 
+            <h3><a href="/cocktail_recipes">View Cocktail Recipes</a></h3>
+        </ul> 
+        
