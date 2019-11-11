@@ -1,6 +1,6 @@
 class UsersController < ApplicationController 
 
-  get "/user" do #read; see all items
+  get "/user" do 
     if logged_in?
       @user = current_user 
       @cocktail_recipes = CocktailRecipe.all
@@ -23,8 +23,8 @@ class UsersController < ApplicationController
   post "/signup" do 
       if logged_in?
       redirect '/cocktail_recipes'
-      elsif params[:username] == "" 
-      flash[:message] = "Username cannot be blank. Please try again."
+      elsif params[:username].empty? || params[:email].empty? || params[:password].empty? 
+      flash[:message] = "You must complete all fields in order to create a username. Please try again."
       redirect to '/signup'
       else
       @user = User.create(username: params[:username], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
