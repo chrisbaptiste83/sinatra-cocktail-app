@@ -27,8 +27,7 @@ class UsersController < ApplicationController
       flash[:message] = "Username cannot be blank. Please try again."
       redirect to '/signup'
    else
-      @user = User.create(params)
-      @user.save
+      @user = User.create(username: params[:username], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
       session[:user_id] = @user.id 
       flash[:message] = "Your account has been succesfully created!"
       erb :"/users/index.html"
@@ -46,12 +45,17 @@ end
 
   post '/login' do
     user = User.find_by(username: params[:username])
-    if user && user.authenticate(params[:password])
+    if user 
+      if user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect to '/user'
+      redirect to '/user' 
+      else 
+        flash[:message] = "Your password is incorrect. Please try again."
+        erb :login 
+      end 
     else
-      flash[:message] = "Your username or password is incorrect. Please try again."
-       redirect to '/login'
+      flash[:message] = "This user does not exist. Sign up to create a user."
+      redirect to '/signup'
     end
 end
 
