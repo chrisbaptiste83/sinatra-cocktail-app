@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
       end
   end
   
-  get '/logout' do
+  delete '/logout' do
     if logged_in?
       session.destroy
       redirect to '/'
