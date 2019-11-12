@@ -18,14 +18,16 @@
       <input type="text" name="cocktail_recipe[instructions]" value="<%=@cocktail_recipe.instructions%>">
     </p>
 
-    <p><input type="submit" value="Submit Changes To This Recipe"></p> 
+      <button>Submit Changes To This Recipe</button> 
     
   </form> 
-
-    <form method="POST" action="/cocktail_recipes/<%=@cocktail_recipe.id%>/delete">
+  
+    <p>
+      <form method="POST" action="/cocktail_recipes/<%=@cocktail_recipe.id%>/delete">
         <input id="hidden" type="hidden" name="_method" value="DELETE">
-        <a><input type="submit" value="Delete Cocktail Recipe" id="Delete Cocktail Recipe"></a>
-    </form> 
+        <button>Delete Cocktail Recipe</button>
+      </form> 
+    </p>
 
 
       
