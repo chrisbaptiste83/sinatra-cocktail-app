@@ -3,7 +3,9 @@
         <% @cocktail_recipes.each do |cocktail_recipe| %>
         <p><br><h2><a href="/cocktail_recipes/<%=cocktail_recipe.id%>"><%=cocktail_recipe.cocktail_name%></a></h2></br>
         <h3><%=cocktail_recipe.ingredients%></h3></p>
-        <% end %> 
-    
-    
+        <% end %>  
+          
+ <br><h3><a href="/user" class="button2">Go Back To My Profile Page</a></h3></br>
+      
+ <br><h3><a href="/cocktail_recipes/new" class="button2">Create a Cocktail</a></h3></br><br>   
         

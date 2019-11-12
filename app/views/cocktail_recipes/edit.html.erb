@@ -5,17 +5,17 @@
 
     <p>
       <label for "cocktail name"><h2>Cocktail Name:</h2></label>
-      <input type="text" name="cocktail_recipe[cocktail_name]" id="cocktail_name" value="<%= @cocktail_recipe.cocktail_name%>">
+      <input type="text" name="cocktail_recipe[cocktail_name]" id="cocktail_name" value="<%= @cocktail_recipe.cocktail_name%>"> 
     </p> 
 
     <p>
       <label for= "ingredients"><h2> Ingredients:</h2></label>
-      <input type="text" name="cocktail_recipe[ingredients]" value="<%= @cocktail_recipe.ingredients%>">
+      <textarea name="cocktail_recipe[ingredients]" cols="60" rows="5" id ="ingredients"> <%=@cocktail_recipe.ingredients%></textarea>
     </p> 
 
     <p>
       <label for ="instructions"><h2>Instructions:<h2></label>
-      <input type="text" name="cocktail_recipe[instructions]" value="<%=@cocktail_recipe.instructions%>">
+      <textarea name="cocktail_recipe[instructions]" cols="60" rows="5" id ="instructions"> <%=@cocktail_recipe.instructions%></textarea>
     </p>
 
       <button>Submit Changes To This Recipe</button> 
@@ -27,7 +27,13 @@
         <input id="hidden" type="hidden" name="_method" value="DELETE">
         <button>Delete Cocktail Recipe</button>
       </form> 
-    </p>
+    </p> 
+
+    <h3><a href="/cocktail_recipes">View All Cocktail Recipes</a></h3></br> 
+          
+    <br><h3><a href="/user">Go Back To My Profile Page</a></h3></br>
+  
+    <br><h3><a href="/cocktail_recipes/new">Create a Cocktail</a></h3></br><br>
 
 
       
