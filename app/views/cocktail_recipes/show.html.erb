@@ -1,16 +1,18 @@
 <h1><%= @cocktail_recipe.cocktail_name%></h1> 
 
- 	 	<p><h2>Ingredients:</h2></p>
+      <p><h2>Ingredients:</h2></p> 
+      
           <p><h3><%= @cocktail_recipe.ingredients%></h3></p>
-
-          <p><h2>Instructions:</h2></p>
-          <br><p><h3><%= @cocktail_recipe.instructions%></h3></p></br>
-
           
+    <p><h2>Instructions:</h2></p> 
 
-        <br><p><a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/edit"><h2>Edit This Recipe</h2></a></p></br>
+          <p><h3><%= @cocktail_recipe.instructions%></h3></p><br>
+
+  
+  <p><a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/edit" class="button"><h2>Edit This Recipe</h2></a></p><br>
+          
+</p>
 
 
- 	  
     
         
