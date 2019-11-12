@@ -2,17 +2,18 @@
   <html> 
     <head>
       <title>Chris's Cocktail Collection</title> 
-
+  
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <link rel="stylesheet" href="/stylesheets/main.css" /> 
-       
+      
     </head>
 
     <body>
       <div class="wrapper"> 
+
        <h3 style='color:red;'><% if flash.has?(:message) %>
        <%= flash[:message] %>
         <% end %></h3> 
@@ -33,12 +34,12 @@
           
           <% end %>
 
-      </nav>
+        </nav>
 
-      <footer class="branding">
-      <small>&copy; 2019 <strong>SinatraCocktailApp</strong></small>
-    </footer>
-  </div>
+          <footer class="branding">
+            <small>&copy; 2019 <strong>SinatraCocktailApp</strong></small>
+            </footer>
+      </div>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <!--[if lt IE 7]>
