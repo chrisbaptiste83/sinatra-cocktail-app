@@ -11,19 +11,17 @@ class SessionsController < ApplicationController
   
     post '/login' do
       user = User.find_by(username: params[:username])
-      if user 
-        if user.authenticate(params[:password])
+      if user && user.authenticate(params[:password])
         session[:user_id] = user.id
         redirect to '/user' 
-        else 
-          flash[:message] = "Your password is incorrect. Please try again."
+      elsif params[:username].empty? || params[:password].empty? 
+          flash[:message] = "Username or password cannot be blank. please try again."
           erb :login 
-        end 
-      else
-        flash[:message] = "This user does not exist. Sign up to create a user."
-        redirect to '/signup'
-      end
-  end
+      else 
+        flash[:message] = "Incorrect username or password. Please try again."
+        erb :login
+        end
+    end
   
   delete '/logout' do
     if logged_in?
