@@ -9,7 +9,8 @@ class ApplicationController < Sinatra::Base
     set :sessions, true
 		set :session_secret, ENV['SESSION_SECRET']
     use Rack::Flash
-
+  end 
+  
   get "/" do
     erb :welcome
   end 
@@ -28,6 +29,6 @@ class ApplicationController < Sinatra::Base
   
     end
 
-  end 
+  
 
 end 
