@@ -2,8 +2,7 @@ class UsersController < ApplicationController
 
   get "/user" do 
     if logged_in?
-      @user = current_user 
-      @cocktail_recipes = CocktailRecipe.all
+      @user = current_user
       erb :"users/index.html"
      else
       redirect to '/login'
@@ -13,7 +12,7 @@ class UsersController < ApplicationController
 
   get '/signup' do 
     if logged_in?
-      redirect to "/cocktail_recipes"
+      redirect to "/user"
    else
     erb :"/users/new.html"
     end 
@@ -21,9 +20,7 @@ class UsersController < ApplicationController
 
 
   post "/signup" do 
-      if logged_in?
-      redirect '/cocktail_recipes'
-      elsif params[:username].empty? || params[:email].empty? || params[:password].empty? 
+      if params[:username].empty? || params[:email].empty? || params[:password].empty? 
       flash[:message] = "You must complete all fields in order to create a username. Please try again."
       redirect to '/signup'
       else
