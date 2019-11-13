@@ -54,8 +54,8 @@ class CocktailRecipesController < ApplicationController
   
   patch "/cocktail_recipes/:id" do 
     @cocktail_recipe = CocktailRecipe.find(params[:id])
-        if params[:cocktail_name].empty? 
-          flash[:message] = "Updated cocktail recipe must have a name."
+        if params[:cocktail_name].empty? || params[:ingredients].empty? || params[:instructions].empty?
+          flash[:message] = "Updated cocktail recipe must have all fields filled."
           redirect "/cocktail_recipes/#{@cocktail_recipe.id}/edit" 
         else
           @cocktail_recipe.update(cocktail_name: params[:cocktail_name], ingredients: params[:ingredients], instructions: params[:instructions]) 
@@ -73,5 +73,5 @@ class CocktailRecipesController < ApplicationController
             redirect "/cocktail_recipes"
           end 
   end 
-  
+
 end
