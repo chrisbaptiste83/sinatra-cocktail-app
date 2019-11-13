@@ -1,8 +1,7 @@
 class CocktailRecipesController < ApplicationController
   
   get "/cocktail_recipes" do
-    if logged_in?
-      @user = current_user 
+    if logged_in? 
       @cocktail_recipes = CocktailRecipe.all
       erb :"/cocktail_recipes/index.html" 
     else 
@@ -43,8 +42,7 @@ class CocktailRecipesController < ApplicationController
    
  
   get "/cocktail_recipes/:id/edit" do 
-    @cocktail_recipe = CocktailRecipe.find(params[:id])
-            
+    @cocktail_recipe = CocktailRecipe.find(params[:id]) 
          if @cocktail_recipe.user == current_user 
             erb :'/cocktail_recipes/edit.html' 
          else 
@@ -73,9 +71,7 @@ class CocktailRecipesController < ApplicationController
             @cocktail_recipe.destroy 
             flash[:message] = "Your recipe has been deleted."
             redirect "/cocktail_recipes"
-          else
-            redirect "/cocktail_recipes"
-         end
-   end
-   
+          end 
+  end 
+  
 end
