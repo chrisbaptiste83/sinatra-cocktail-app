@@ -7,6 +7,12 @@
       <label for "cocktail name"><h2>Cocktail Name:</h2></label>
       <input type="text" name="cocktail_name" id="cocktail_name" value="<%= @cocktail_recipe.cocktail_name%>" style='width:50%'> 
     </p> 
+
+    <p>
+      <label for "image url"><h2>Image URL:</h2></label>
+      <input type="text" name="image_url" id="image_url" value="<%= @cocktail_recipe.image_url%>" style='width:50%'> 
+    </p> 
+
     <p>
       <label for= "ingredients"><h2> Ingredients:</h2></label>
       <textarea name="ingredients" cols="60" rows="5" id ="ingredients" style='width:50%'> <%=@cocktail_recipe.ingredients%></textarea>
@@ -15,12 +21,12 @@
       <label for ="instructions"><h2>Instructions:<h2></label>
       <textarea name="instructions" cols="60" rows="5" id ="instructions" style='width:50%'> <%=@cocktail_recipe.instructions%></textarea>
     </p>
-    <button>Submit Changes To This Recipe</button>   
+    <button><h4>Submit Changes To This Recipe</h4></button>   
   </form> 
   <p>
     <form method="POST" action="/cocktail_recipes/<%=@cocktail_recipe.id%>/delete">
       <input id="hidden" type="hidden" name="_method" value="DELETE">
-      <button>Delete Cocktail Recipe</button>
+      <button><h4>Delete Cocktail Recipe</h4></button>
     </form> 
   </p> 
 </div>  

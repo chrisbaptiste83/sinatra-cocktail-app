@@ -1,5 +1,7 @@
 <div class="jumbotron text-white w-50" style="background-color: rgba(0,0,0, 0.75);" > 
-<h1><%= @cocktail_recipe.cocktail_name%></h1> 
+<h1><%= @cocktail_recipe.cocktail_name%></h1><br> 
+
+<p><img src="<%= @cocktail_recipe.image_url%>" alt="image" style="width: 380px"></p><br>
 
 <p>
   <h2>Ingredients:</h2>
@@ -16,7 +18,7 @@
 
 <% if current_user == @cocktail_recipe.user%>
   <p>
-    <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/edit" class="button"><h2>Edit This Recipe</h2></a> 
+    <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/edit" style="color: #f5f5f5"><h2>Edit This Recipe</h2></a> 
   </p><br> 
 <%end%> 
 </div>

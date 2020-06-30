@@ -20,25 +20,11 @@
       border-radius: 10px;
     }
  
-    .wrapper {	
-      border-radius: 25px;		
-      margin: 16px auto;		
-      max-width: 800px;		
-      padding: 3.5%; /* 18px / 800px */		
-      width: 80%; 
-     }
 
     a {	
-      border-radius: 10px;
-      background-color:rgb(5, 3, 3); 
-      color:white;
-      padding: .75em 1.25em; 
-      text-decoration: none; 
-    } 
-
-    a:hover {
-      background-color: #555;
+      color: white;
     }
+  
 
  
      h1 { 		

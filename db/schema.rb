@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20191104152723) do
 
   create_table "cocktail_recipes", force: :cascade do |t|
     t.string   "cocktail_name"
+    t.string   "image_url"
     t.string   "ingredients"
     t.text     "instructions"
     t.integer  "user_id"

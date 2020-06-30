@@ -14,13 +14,13 @@ class CocktailRecipesController < ApplicationController
 
   
   post "/cocktail_recipes" do 
-    if params[:cocktail_name].empty? || params[:ingredients].empty? || params[:instructions].empty?
+    if params[:cocktail_name].empty? || params[:ingredients].empty? || params[:instructions].empty? || params[:image_url].empty? 
       flash[:message] = "Please complete all fields in order to upload a recipe."
       erb :"cocktail_recipes/new.html"
     else
       #@cocktail_recipe = CocktailRecipe.create(cocktail_name: params[:cocktail_name], ingredients: params[:ingredients], instructions: params[:instructions])
       #@cocktail_recipe.user = current_user 
-      @cocktail_recipe = current_user.cocktail_recipes.build(cocktail_name: params[:cocktail_name], ingredients: params[:ingredients], instructions: params[:instructions])
+      @cocktail_recipe = current_user.cocktail_recipes.build(cocktail_name: params[:cocktail_name], ingredients: params[:ingredients], instructions: params[:instructions], image_url: params[:image_url])
       @cocktail_recipe.save 
       flash[:message] = "Your cocktail has been created."
       redirect "/cocktail_recipes/#{@cocktail_recipe.id}"
@@ -44,11 +44,11 @@ class CocktailRecipesController < ApplicationController
 
   patch "/cocktail_recipes/:id" do 
     @cocktail_recipe = CocktailRecipe.find(params[:id])
-      if params[:cocktail_name].empty? || params[:ingredients].empty? || params[:instructions].empty?
+      if params[:cocktail_name].empty? || params[:ingredients].empty? || params[:instructions].empty? || params[:image_url].empty?
         flash[:message] = "Updated cocktail recipe must have all fields filled."
         redirect "/cocktail_recipes/#{@cocktail_recipe.id}/edit" 
       else
-        @cocktail_recipe.update(cocktail_name: params[:cocktail_name], ingredients: params[:ingredients], instructions: params[:instructions]) 
+        @cocktail_recipe.update(cocktail_name: params[:cocktail_name], ingredients: params[:ingredients], instructions: params[:instructions], image_url: params[:image_url] ) 
         flash[:message] = "Your recipe has been updated."
         redirect "/cocktail_recipes"
       end
