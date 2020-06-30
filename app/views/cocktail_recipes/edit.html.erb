@@ -1,39 +1,31 @@
 <h1>Edit Cocktail Recipe</h1>
 
-    <form method="POST" action="/cocktail_recipes/<%=@cocktail_recipe.id%>"> 
-    <input id="hidden" type="hidden" name="_method" value="PATCH">
-
+  <form method="POST" action="/cocktail_recipes/<%=@cocktail_recipe.id%>"> 
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
     <p>
       <label for "cocktail name"><h2>Cocktail Name:</h2></label>
       <input type="text" name="cocktail_name" id="cocktail_name" value="<%= @cocktail_recipe.cocktail_name%>"> 
     </p> 
-
     <p>
       <label for= "ingredients"><h2> Ingredients:</h2></label>
       <textarea name="ingredients" cols="60" rows="5" id ="ingredients"> <%=@cocktail_recipe.ingredients%></textarea>
     </p> 
-
     <p>
       <label for ="instructions"><h2>Instructions:<h2></label>
       <textarea name="instructions" cols="60" rows="5" id ="instructions"> <%=@cocktail_recipe.instructions%></textarea>
     </p>
-
-      <button>Submit Changes To This Recipe</button> 
-    
+    <button>Submit Changes To This Recipe</button>   
   </form> 
-  
-    <p>
-      <form method="POST" action="/cocktail_recipes/<%=@cocktail_recipe.id%>/delete">
-        <input id="hidden" type="hidden" name="_method" value="DELETE">
-        <button>Delete Cocktail Recipe</button>
-      </form> 
-    </p> 
+  <p>
+    <form method="POST" action="/cocktail_recipes/<%=@cocktail_recipe.id%>/delete">
+      <input id="hidden" type="hidden" name="_method" value="DELETE">
+      <button>Delete Cocktail Recipe</button>
+    </form> 
+  </p>
 
-    <h3><a href="/cocktail_recipes">View All Cocktail Recipes</a></h3></br> 
-          
-    <br><h3><a href="/user">Go Back To My Profile Page</a></h3></br>
-  
-    <br><h3><a href="/cocktail_recipes/new">Create a Cocktail</a></h3></br><br>
+<h3><a href="/cocktail_recipes">View All Cocktail Recipes</a></h3></br>       
+<br><h3><a href="/user">Go Back To My Profile Page</a></h3></br>
+<br><h3><a href="/cocktail_recipes/new">Create a Cocktail</a></h3></br><br>
 
 
       

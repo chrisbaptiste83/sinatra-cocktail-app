@@ -8,43 +8,74 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <link rel="stylesheet" href="/stylesheets/main.css" /> 
-      
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/bootstrap.css" /> 
+        <link rel="stylesheet" href="/css/bootstrap-responsive.css" /> 
     </head>
+   
 
-    <body>
+    <body> 
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+      <a class="navbar-brand" href="/cocktail_recipes"><h2>Chris's Cocktail Collection</h2></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <a class="navbar-brand" href="/login"><h2>Login</h2></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> 
+
+      <a class="navbar-brand" href="/sign_up"><h2>Sign Up</h2></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>    
+      </button> 
+
+      <a class="navbar-brand" href="/user"><h2>Profile</h2></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <a class="navbar-brand" href="/cocktail_recipes/new"><h2>Create</h2></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> 
+
+      
+
+   </nav>
+    
       <div class="wrapper"> 
-
-
+  
        <h3 style='color:red;'><% if flash.has?(:message) %>
        <%= flash[:message] %>
         <% end %></h3> 
 
         <%= yield %>  
 
-        <nav> 
-
-          <% if logged_in? %>
-            <form method="post" action="/logout" style="display: inline"> 
-            <input type="hidden" name="_method" value="delete">
-            <button>Logout</button> 
-            </form>
-          <% else %> 
-          
-          <% end %>
-
-        </nav>
-
+    
           <footer class="branding">
             <small>&copy; 2019 <strong>SinatraCocktailApp</strong></small>
-            </footer>
-      </div>
+            </footer> 
 
+            <% if logged_in? %>
+            <form method="post" action="/logout" style="display: right"> 
+            <input type="hidden" name="_method" value="delete">
+            <button>Logout</button> 
+            </form> 
+          <% end %>    
+      </div>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>      
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <!--[if lt IE 7]>
-    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+   
     <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script> 
     
   <![endif]-->
+
 
   </body>
 </html>
