@@ -1,21 +1,22 @@
-<h1>Log In</h1> 
+<div class="jumbotron text-white w-50" style="background-color: rgba(0,0,0, 0.75);" > 
+  <h1>Log In</h1> 
 
-  <p><h2>Enter your username and password to log in:</h2></p> 
+    <p><h2>Enter your username and password to log in:</h2></p><br> 
 
-    <form method="POST" action="/login"> 
-    
-        <p>
-          <label for ="username"><h2>Username:</h2></label>
-          <input type="text" name="username" placeholder="username"/> 
-        </p> 
-        <p>
-          <label for ="password"><h2>Password:</h2></label> 
-          <input type="password" name="password" placeholder="password"/>
-        </p> 
+      <form method="POST" action="/login"> 
+      
+          <p>
+            <label for ="username"><h2>Username:</h2></label><br>
+            <input type="text" name="username" placeholder="username" style='width:50%'/> 
+          </p> 
+          <p>
+            <label for ="password"><h2>Password:</h2></label><br>
+            <input type="password" name="password" placeholder="password" style='width:50%'/>
+          </p> 
 
-        <button>Log In</button> 
+          <button>Log In</button> 
 
-    </form>
-    
-  <p><h3>If you don't have an account, you can <a href="/signup">Sign Up</a> now.</h3></p>
-  
+      </form><br>
+      
+    <p><h3>If you don't have an account, you can <a href="/signup">Sign Up</a> now.</h3></p>
+  </div>

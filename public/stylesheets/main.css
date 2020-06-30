@@ -1,12 +1,8 @@
 	
-    /* --- Reset Styles --- */		
-   	
- 
      html, body {		
       height: 100%;		
       width: 100%;		
     }		
- 
      /* --- Welcome Page Styles --- */		
     body { 
       background-image: url('/images/barpicture.jpg') !important;  	
@@ -24,16 +20,12 @@
       border-radius: 10px;
     }
  
-     .wrapper {	
-      border-radius: 20px;
-      background: rgb(145, 139, 139);		
-      -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);		
-      -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);		
-      box-shadow: 0 0 10px rgba(0,0,0,.3);		
+    .wrapper {	
+      border-radius: 25px;		
       margin: 16px auto;		
       max-width: 800px;		
       padding: 3.5%; /* 18px / 800px */		
-      width: 75%; 
+      width: 80%; 
      }
 
     a {	
@@ -91,110 +83,5 @@
       font-size: 14px;		
     }		
  
-     .branding {		
-      clear: both;		
-    }		
- 
-     footer.branding {		
-      border-top: 2px solid #ccc;		
-      margin-top: 20px;		
-      padding-top: 20px;		
-    }	 
-
-    button {
-      border-top: 1px solid #1f2021;
-      background: #26292b;
-      background: -webkit-gradient(linear, left top, left bottom, from(#54595c), to(#26292b));
-      background: -webkit-linear-gradient(top, #54595c, #26292b);
-      background: -moz-linear-gradient(top, #54595c, #26292b);
-      background: -ms-linear-gradient(top, #54595c, #26292b);
-      background: -o-linear-gradient(top, #54595c, #26292b);
-      padding: 9.5px 19px;
-      -webkit-border-radius: 12px;
-      -moz-border-radius: 12px;
-      border-radius: 12px;
-      -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-      -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-      box-shadow: rgba(0,0,0,1) 0 1px 0;
-      text-shadow: rgba(0,0,0,.4) 0 1px 0;
-      color: white;
-      font-size: 23px;
-      font-family: Helvetica, Arial, Sans-Serif;
-      text-decoration: none;
-      vertical-align: middle;
-      }
-   .button:hover {
-      border-top-color: #696d70;
-      background: #696d70;
-      color: #918a91;
-      }
-   .button:active {
-      border-top-color: #71777a;
-      background: #71777a;
-      }
-
-    .button {
-        border-top: 1px solid #1f2021;
-        background: #26292b;
-        background: -webkit-gradient(linear, left top, left bottom, from(#54595c), to(#26292b));
-        background: -webkit-linear-gradient(top, #54595c, #26292b);
-        background: -moz-linear-gradient(top, #54595c, #26292b);
-        background: -ms-linear-gradient(top, #54595c, #26292b);
-        background: -o-linear-gradient(top, #54595c, #26292b);
-        padding: 15px 0px;
-        -webkit-border-radius: 12px;
-        -moz-border-radius: 12px;
-        border-radius: 10px;
-        -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-        -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-        box-shadow: rgba(0,0,0,1) 0 1px 0;
-        text-shadow: rgba(0,0,0,.4) 0 1px 0;
-        color: white;
-        font-size: 23px;
-        font-family: Helvetica, Arial, Sans-Serif;
-        text-decoration: none;
-        vertical-align: middle;
-        }
-     .button:hover {
-        border-top-color: #696d70;
-        background: #696d70;
-        color: #918a91;
-        }
-     .button:active {
-        border-top-color: #71777a;
-        background: #71777a;
-        } 
-
-      .button2 {
-          border-top: 1px solid #32383b;
-          background: #35383b;
-          background: -webkit-gradient(linear, left top, left bottom, from(#464a4d), to(#35383b));
-          background: -webkit-linear-gradient(top, #464a4d, #35383b);
-          background: -moz-linear-gradient(top, #464a4d, #35383b);
-          background: -ms-linear-gradient(top, #464a4d, #35383b);
-          background: -o-linear-gradient(top, #464a4d, #35383b);
-          padding: 12px 24px;
-          -webkit-border-radius: 8px;
-          -moz-border-radius: 8px;
-          border-radius: 8px;
-          -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-          -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-          box-shadow: rgba(0,0,0,1) 0 1px 0;
-          text-shadow: rgba(0,0,0,.4) 0 1px 0;
-          color: white;
-          font-size: 23px;
-          font-family: Helvetica, Arial, Sans-Serif;
-          text-decoration: none;
-          vertical-align: middle;
-          }
-       .button:hover {
-          border-top-color: #3c4145;
-          background: #3c4145;
-          color: #241c24;
-          }
-       .button:active {
-          border-top-color: #3c4042;
-          background: #3c4042;
-          }
- 
+     
   
