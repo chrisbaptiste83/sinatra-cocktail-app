@@ -8,12 +8,12 @@ Fork and clone this repository into your local machine. Cd into the repository's
 
 ## Usage: 
 
-Once you are in the app's directory run shotgun to start up the server. Open the application by entering the address provided by the server into your web browser. 
+Once you are in the app's directory run shotgun to start up the server. Open the application by entering the address provided by the server (localhost:9393/) into your web browser. 
 
 1. At the home page, click on the sign up to create a profile. 
 2. Enter the required information to create a profile. 
 3. Once profile is successfully created, users are redirected to their profile page. Click on the links on the navigation bar to browse through the application's pages. 
-4. Once you are done browsing through the recipes and uploading your personal recipes, click on the Logout link to log out of the application.
+4. Once you are done browsing through the recipes or uploading your personal recipes, click on the Logout link to log out of the application.
 
 ## Contributing:
 
