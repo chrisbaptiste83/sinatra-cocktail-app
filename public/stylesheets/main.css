@@ -5,12 +5,20 @@
     }		
      /* --- Welcome Page Styles --- */		
     body { 
-      background-image: url('/images/barpicture.jpg') !important;  	
+      /* background-image: url('/images/barpicture.jpg') !important;  	
       min-height: 100%;
       background-position: center;
       background-size: cover;
       font-family: sans-serif;		
-      line-height: 18px;		
+      line-height: 18px;  */
+      background: linear-gradient(
+        rgba(20,20,20, .5), 
+        rgba(20,20,20, .5)), 
+        url(/images/barpicture.jpg);
+
+    
+      background-attachment:fixed;
+      background-size:cover;		
     }		
     img { 
       display: block;
