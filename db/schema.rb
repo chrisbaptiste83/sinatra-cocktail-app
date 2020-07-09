@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20191104152723) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "cocktail_recipes", force: :cascade do |t|
     t.string   "cocktail_name"
     t.string   "image_url"
