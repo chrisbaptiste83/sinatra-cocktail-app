@@ -6,5 +6,5 @@ development:
 production:
   adapter: postgresql
   encoding: unicode
-  databaes: database_production
+  database: database_production
   pool: 5
