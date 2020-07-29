@@ -18,10 +18,27 @@
 
 <% if current_user == @cocktail_recipe.user%>
   <p>
-    <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/edit" style="color: #f5f5f5"><h2>Edit This Recipe</h2></a> 
+    <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/edit"><h2>Edit This Recipe</h2></a> 
   </p><br> 
 <%end%> 
-</div>
+
+
+      <h4>Comments:</h4>
+      <% @comments.each do |comment| %>
+        <p>
+          Posted by: <a href="/users/<%= comment.user.username%>"><%= comment.user.username %></a>
+        </p>
+        <p><%= comment.content %></p> 
+        <% if comment.user_id == current_user.id %>
+          <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/comments/<%=comment.id%>/edit" ><input type="button" class="btn " value="Edit Your Comment" /></a>      
+        <%end%>
+        <br><br> 
+      <%end%>
+      <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/comments/new" ><input type="button" class="btn btn-primary" value="New Comment" /></a>  
+     
+      
+
+
 
 
   

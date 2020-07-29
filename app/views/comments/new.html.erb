@@ -1,0 +1,15 @@
+<div class="jumbotron text-white w-50" style="background-color: rgba(0,0,0, 0.90);" >
+<h4>New Comment!</h4>
+<br>
+<div class="container" style="width:60%;">
+  <form class="form-center" action="/cocktail_recipes/<%=@cocktail_recipe.id%>/comments" method="POST">
+    <div class="form-group">
+      <label for="comment_content">Content:</label>
+      <textarea type="text" id="comment_content" rows=5 class="form-control" name="comment[content]"></textarea>
+    </div>
+    <div style="text-align: center">
+      <button type="submit" class="btn btn-primary">Create New Comment</button><br><br>
+    </div>
+  </form>
+</div>
+</div>

@@ -1,0 +1,11 @@
+<div class="jumbotron text-white w-50" style="background-color: rgba(0,0,0, 0.90);" >
+<a href="/cocktail_recipes/<%=@cocktail_recipe_id%>"><button type="button" class="btn btn-link disabled">Back to Cocktail</button></a>
+<br><br>  
+  <p>
+    Posted by: <a href="/users/<%= @comment.user.username %>"><%= @comment.user.username %></a>
+  </p>
+  <p><%= @comment.content %></p>
+  <% if @comment.user_id == current_user.id %>
+    <a href="/cocktail_recipes/<%=@cocktail_recipe_id%>/comments/<%=@comment.id%>/edit"><button type="submit" class="btn btn-warning">Edit your comment</button></a>      
+  <%end%>
+</div>

@@ -29,6 +29,7 @@ class CocktailRecipesController < ApplicationController
 
   get "/cocktail_recipes/:id" do 
     @cocktail_recipe = CocktailRecipe.find(params[:id]) 
+    @comments = Comment.where("cocktail_recipe_id = #{@cocktail_recipe.id}") #all comments where post id is == the current post id
     erb :"/cocktail_recipes/show.html"
   end
    
