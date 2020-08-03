@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   get "/login" do 
     if logged_in?
-      redirect to "/user"
+      redirect to "/users/#{current_user.username}"
     else
     erb :login 
     end 
@@ -10,10 +10,10 @@ class SessionsController < ApplicationController
     
   
   post '/login' do
-    user = User.find_by(username: params[:username])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect to '/user' 
+    @user = User.find_by(username: params[:username])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect to "/users/#{@user.username}" 
     elsif params[:username].empty? || params[:password].empty? 
         flash[:message] = "Username or password cannot be blank. please try again."
         erb :login 
