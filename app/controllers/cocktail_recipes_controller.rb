@@ -14,13 +14,13 @@ class CocktailRecipesController < ApplicationController
 
   
   post "/cocktail_recipes" do 
-    if params[:cocktail_name].empty? || params[:ingredients].empty? || params[:instructions].empty? || params[:image_url].empty? 
+    if params[:cocktail_name].empty? || params[:ingredients].empty? || params[:instructions].empty? || params[:image_url].empty? || params[:description].empty? 
       flash[:message] = "Please complete all fields in order to upload a recipe."
       erb :"cocktail_recipes/new.html"
     else
       #@cocktail_recipe = CocktailRecipe.create(cocktail_name: params[:cocktail_name], ingredients: params[:ingredients], instructions: params[:instructions])
       #@cocktail_recipe.user = current_user 
-      @cocktail_recipe = current_user.cocktail_recipes.build(cocktail_name: params[:cocktail_name], ingredients: params[:ingredients], instructions: params[:instructions], image_url: params[:image_url])
+      @cocktail_recipe = current_user.cocktail_recipes.build(cocktail_name: params[:cocktail_name], ingredients: params[:ingredients], instructions: params[:instructions], image_url: params[:image_url],description: params[:description])
       @cocktail_recipe.save 
       flash[:message] = "Your cocktail has been created."
       redirect "/cocktail_recipes/#{@cocktail_recipe.id}"

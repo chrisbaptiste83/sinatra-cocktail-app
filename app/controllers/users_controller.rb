@@ -1,6 +1,8 @@
 class UsersController < ApplicationController 
 
   get '/users/:slug' do 
+    @cocktail_recipe = CocktailRecipe.all.last 
+    @random_cocktail_recipe = CocktailRecipe.all.order('RANDOM()').first
     if logged_in?
       @user = User.find_by_slug(params[:slug]) 
       if current_user != @user 
@@ -30,7 +32,7 @@ class UsersController < ApplicationController
       @user = User.create(username: params[:username], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
       session[:user_id] = @user.id 
       flash[:message] = "Your account has been succesfully created!"
-      erb :"/users/#{@user.username}"
+      redirect to "/users/#{current_user.username}"
     end
   end 
 

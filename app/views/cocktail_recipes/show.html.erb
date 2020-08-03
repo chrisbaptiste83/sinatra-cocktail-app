@@ -1,41 +1,44 @@
 <div class="jumbotron text-white w-50" style="background-color: rgba(0,0,0, 0.90);" > 
-<h1><%= @cocktail_recipe.cocktail_name%></h1><br> 
+  <h1><%= @cocktail_recipe.cocktail_name%></h1><br> 
+  <h5><%= @cocktail_recipe.description%></h5><br> 
 
-<p><img src="<%= @cocktail_recipe.image_url%>" alt="image" style="width: 380px"></p><br>
+  <p><img src="<%= @cocktail_recipe.image_url%>" alt="image" style="width: 380px"></p><br>
 
-<p>
-  <h3>Ingredients:</h3>
-</p> 
-<p>
-  <h4><%= @cocktail_recipe.ingredients%></h4>
-</p>      
-<p>
-  <h3>Instructions:</h3>
-</p> 
-<p>
-  <h4><%= @cocktail_recipe.instructions%></h4>
-</p><br>
-
-<% if current_user == @cocktail_recipe.user%>
   <p>
-    <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/edit"><h2>Edit This Recipe</h2></a> 
-  </p><br> 
-<%end%> 
+    <h3>Ingredients:</h3>
+  </p> 
+  <p>
+    <h4><%= @cocktail_recipe.ingredients%></h4>
+  </p>      
+  <p>
+    <h3>Instructions:</h3>
+  </p> 
+  <p>
+    <h4><%= @cocktail_recipe.instructions%></h4>
+  </p><br>
+
+  <% if current_user == @cocktail_recipe.user%>
+    <p>
+      <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/edit"><h2>Edit This Recipe</h2></a> 
+    </p><br> 
+  <%end%> 
 
 
-      <h4>Comments:</h4></br>
-      <% @comments.each do |comment| %> 
-        <p><%= comment.content %></p>
+
+  <h4>Comments:</h4></br> 
+    
+    <% @comments.each do |comment| %> 
+      <p><%= comment.content %></p>
         <p>
           Posted by: <a href="/users/<%= comment.user.username%>"><%= comment.user.username %></a>
         </p> 
-        <% if comment.user_id == current_user.id %>
-          <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/comments/<%=comment.id%>/edit" ><input type="button" class="btn " value="Edit Your Comment" /></a>      
-        <%end%>
-        <br>
-      <%end%><br></br>
-      <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/comments/new" ><input type="button" class="btn btn-primary" value="New Comment" /></a>  
-     
+      <% if comment.user_id == current_user.id %>
+        <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/comments/<%=comment.id%>/edit" ><input type="button" class="btn " value="Edit Your Comment" /></a>      
+      <%end%><br>   
+    <%end%><br></br>   
+    
+  <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/comments/new" ><input type="button" class="btn btn-primary" value="New Comment" /></a>  
+</div>    
       
 
 
