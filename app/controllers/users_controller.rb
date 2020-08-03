@@ -1,18 +1,22 @@
 class UsersController < ApplicationController 
 
-  get "/user" do 
+  get '/users/:slug' do 
     if logged_in?
-      @user = current_user
-      erb :"users/index.html"
-     else
-      redirect to '/login'
-    end
+      @user = User.find_by_slug(params[:slug]) 
+      if current_user != @user 
+        erb :"users/show.html"  
+      else  
+        erb :"users/index.html"   
+      end 
+    else 
+      redirect to "/login" 
+    end         
   end
 
 
   get '/signup' do 
     if logged_in?
-      redirect to "/user"
+      redirect to "/users/#{current_user.username}"
    else
     erb :"/users/new.html"
     end 
@@ -26,7 +30,7 @@ class UsersController < ApplicationController
       @user = User.create(username: params[:username], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
       session[:user_id] = @user.id 
       flash[:message] = "Your account has been succesfully created!"
-      erb :"/users/index.html"
+      erb :"/users/#{@user.username}"
     end
   end 
 
