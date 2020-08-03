@@ -4,16 +4,16 @@
 <p><img src="<%= @cocktail_recipe.image_url%>" alt="image" style="width: 380px"></p><br>
 
 <p>
-  <h2>Ingredients:</h2>
+  <h3>Ingredients:</h3>
 </p> 
 <p>
-  <h3><%= @cocktail_recipe.ingredients%></h3>
+  <h4><%= @cocktail_recipe.ingredients%></h4>
 </p>      
 <p>
-  <h2>Instructions:</h2>
+  <h3>Instructions:</h3>
 </p> 
 <p>
-  <h3><%= @cocktail_recipe.instructions%></h3>
+  <h4><%= @cocktail_recipe.instructions%></h4>
 </p><br>
 
 <% if current_user == @cocktail_recipe.user%>
@@ -23,17 +23,17 @@
 <%end%> 
 
 
-      <h4>Comments:</h4>
-      <% @comments.each do |comment| %>
+      <h4>Comments:</h4></br>
+      <% @comments.each do |comment| %> 
+        <p><%= comment.content %></p>
         <p>
           Posted by: <a href="/users/<%= comment.user.username%>"><%= comment.user.username %></a>
-        </p>
-        <p><%= comment.content %></p> 
+        </p> 
         <% if comment.user_id == current_user.id %>
           <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/comments/<%=comment.id%>/edit" ><input type="button" class="btn " value="Edit Your Comment" /></a>      
         <%end%>
-        <br><br> 
-      <%end%>
+        <br>
+      <%end%><br></br>
       <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/comments/new" ><input type="button" class="btn btn-primary" value="New Comment" /></a>  
      
       
