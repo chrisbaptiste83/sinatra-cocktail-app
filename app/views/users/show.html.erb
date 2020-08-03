@@ -1,0 +1,13 @@
+<div class="jumbotron text-white w-50" style="background-color: rgba(0,0,0, 0.90);" > 
+      <h2>View all Cocktail Recipes by <%=@user.username%>:</h2> 
+      <br></br>
+      <% @user.cocktail_recipes.each do |cocktail_recipe| %>
+        <h3> <a href="/cocktail_recipes/<%= cocktail_recipe.id %>"><%= cocktail_recipe.cocktail_name %></a> </h3><br>
+        <p>
+        <p><img src="<%= cocktail_recipe.image_url%>" alt="image" style="width: 220px"></p><br> 
+        </p> 
+        <h5>Created on <%=cocktail_recipe.created_at_date%></h5>
+
+        <%end%> 
+</div>
+   
