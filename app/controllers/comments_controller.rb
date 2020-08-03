@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
       @comment = Comment.create(comment)
       @comment.save
     end
-    redirect to "/cocktail_recipes/#{cocktail_recipe_id}/comments/#{@comment.id}"
+    redirect to "/cocktail_recipes/#{cocktail_recipe_id}"
   end
 
   get '/cocktail_recipes/:cocktail_recipe_id/comments/:comment_id' do 
@@ -63,7 +63,7 @@ class CommentsController < ApplicationController
     end
   end
   
-  delete '/cocktail_recipes/:cocktail_recipes_id/comments/:comment_id/delete' do
+  delete '/cocktail_recipes/:cocktail_recipe_id/comments/:comment_id/delete' do
     if logged_in?
       @cocktail_recipe_id = params[:cocktail_recipe_id]
       @comment = Comment.find_by_id(params[:comment_id])
@@ -71,7 +71,7 @@ class CommentsController < ApplicationController
         @comment.delete
         redirect to "/cocktail_recipes/#{@cocktail_recipe_id}" 
       else
-        redirect to "/posts/#{@post_id}" 
+        redirect to "/cocktail_recipes/#{@cocktail_recipe_id}" 
       end
     else
       redirect_if_not_logged_in
