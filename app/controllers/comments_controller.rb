@@ -6,17 +6,16 @@ class CommentsController < ApplicationController
     erb :'comments/new.html'
   end
 
-  post '/cocktail_recipes/:cocktail_recipe_id/comments' do  
+  post '/cocktail_recipes/:cocktail_recipe_id/comments' do
     cocktail_recipe_id = params[:cocktail_recipe_id]
     if params[:comment][:content] == ""
       flash[:message] = "Content cannot be blank!"
-      redirect to "/cocktaiil_recipes/#{cocktail_recipe_id}/comments/new"
+      redirect to "/cocktail_recipes/#{cocktail_recipe_id}/comments/new"
     else
       comment = params[:comment]
       comment[:cocktail_recipe_id] = params[:cocktail_recipe_id]
       comment[:user_id] = session[:user_id]
       @comment = Comment.create(comment)
-      @comment.save
     end
     redirect to "/cocktail_recipes/#{cocktail_recipe_id}"
   end
@@ -46,7 +45,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  patch '/cocktail_recipes/:cocktail_recipe_id/comments/:comment_id' do 
+  patch '/cocktail_recipes/:cocktail_recipe_id/comments/:comment_id' do
     if logged_in?
       @cocktail_recipe_id = params[:cocktail_recipe_id]
       @comment = Comment.find_by_id(params[:comment_id])
@@ -55,7 +54,6 @@ class CommentsController < ApplicationController
         redirect to "/cocktail_recipes/#{@cocktail_recipe_id}/comments/#{@comment.id}/edit"
       else
         @comment.update(params[:comment])
-        @comment.save
         redirect to "/cocktail_recipes/#{@cocktail_recipe_id}/comments/#{@comment.id}"
       end
     else

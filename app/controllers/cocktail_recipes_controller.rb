@@ -27,42 +27,59 @@ class CocktailRecipesController < ApplicationController
     end
   end
 
-  get "/cocktail_recipes/:id" do 
-    @cocktail_recipe = CocktailRecipe.find(params[:id]) 
-    @comments = Comment.where("cocktail_recipe_id = #{@cocktail_recipe.id}") #all comments where post id is == the current post id
-    erb :"/cocktail_recipes/show.html"
+  get "/cocktail_recipes/:id" do
+    @cocktail_recipe = CocktailRecipe.find_by(id: params[:id])
+    if @cocktail_recipe
+      @comments = Comment.where(cocktail_recipe_id: @cocktail_recipe.id)
+      erb :"/cocktail_recipes/show.html"
+    else
+      flash[:message] = "Cocktail recipe not found."
+      redirect "/cocktail_recipes"
+    end
   end
    
-  get "/cocktail_recipes/:id/edit" do 
-    @cocktail_recipe = CocktailRecipe.find(params[:id]) 
-      if @cocktail_recipe.user == current_user 
-        erb :'/cocktail_recipes/edit.html' 
-      else 
-        flash[:message] = "You must be the cocktail recipe's owner in order to edit the recipe."
-        redirect "/cocktail_recipes"
-      end
+  get "/cocktail_recipes/:id/edit" do
+    @cocktail_recipe = CocktailRecipe.find_by(id: params[:id])
+    if @cocktail_recipe.nil?
+      flash[:message] = "Cocktail recipe not found."
+      redirect "/cocktail_recipes"
+    elsif @cocktail_recipe.user == current_user
+      erb :'/cocktail_recipes/edit.html'
+    else
+      flash[:message] = "You must be the cocktail recipe's owner in order to edit the recipe."
+      redirect "/cocktail_recipes"
+    end
   end
 
-  patch "/cocktail_recipes/:id" do 
-    @cocktail_recipe = CocktailRecipe.find(params[:id])
-      if params[:cocktail_name].empty? || params[:ingredients].empty? || params[:instructions].empty? || params[:image_url].empty?
-        flash[:message] = "Updated cocktail recipe must have all fields filled."
-        redirect "/cocktail_recipes/#{@cocktail_recipe.id}/edit" 
-      else
-        @cocktail_recipe.update(cocktail_name: params[:cocktail_name], ingredients: params[:ingredients], instructions: params[:instructions], image_url: params[:image_url] ) 
-        flash[:message] = "Your recipe has been updated."
-        redirect "/cocktail_recipes"
-      end
+  patch "/cocktail_recipes/:id" do
+    @cocktail_recipe = CocktailRecipe.find_by(id: params[:id])
+    if @cocktail_recipe.nil?
+      flash[:message] = "Cocktail recipe not found."
+      redirect "/cocktail_recipes"
+    elsif params[:cocktail_name].empty? || params[:ingredients].empty? || params[:instructions].empty? || params[:image_url].empty?
+      flash[:message] = "Updated cocktail recipe must have all fields filled."
+      redirect "/cocktail_recipes/#{@cocktail_recipe.id}/edit"
+    else
+      @cocktail_recipe.update(cocktail_name: params[:cocktail_name], ingredients: params[:ingredients], instructions: params[:instructions], image_url: params[:image_url])
+      flash[:message] = "Your recipe has been updated."
+      redirect "/cocktail_recipes"
+    end
   end
 
   
-  delete "/cocktail_recipes/:id/delete" do 
-    @cocktail_recipe = CocktailRecipe.find(params[:id])
-      if @cocktail_recipe.user_id == current_user.id
-        @cocktail_recipe.destroy 
-        flash[:message] = "Your recipe has been deleted."
-        redirect "/cocktail_recipes"
-      end 
+  delete "/cocktail_recipes/:id/delete" do
+    @cocktail_recipe = CocktailRecipe.find_by(id: params[:id])
+    if @cocktail_recipe.nil?
+      flash[:message] = "Cocktail recipe not found."
+      redirect "/cocktail_recipes"
+    elsif @cocktail_recipe.user_id == current_user.id
+      @cocktail_recipe.destroy
+      flash[:message] = "Your recipe has been deleted."
+      redirect "/cocktail_recipes"
+    else
+      flash[:message] = "You must be the cocktail recipe's owner to delete it."
+      redirect "/cocktail_recipes"
+    end
   end 
 
 end
