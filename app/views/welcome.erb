@@ -1,9 +1,37 @@
-<div class="jumbotron text-white w-50" style="background-color: rgba(0,0,0, 0.90);" > 
+<div class="hero min-h-[70vh]">
+  <div class="hero-content text-center">
+    <div class="max-w-3xl">
+      <div class="card bg-base-300 shadow-2xl">
+        <div class="card-body">
+          <h1 class="text-6xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">
+            Welcome to Chris's Cocktail Collection
+          </h1>
+          <p class="text-xl mb-6">
+            Discover, create, and share amazing cocktail recipes with fellow mixology enthusiasts
+          </p>
 
-  <h1>Welcome to Chris's Cocktail Collection</h1> 
+          <div class="divider"></div>
 
-  <p><h2> Log In or Sign Up to start viewing and uploading cocktail recipes.</h2></p> 
+          <% unless logged_in? %>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-4">
+              <a href="/signup" class="btn btn-primary btn-lg">Get Started</a>
+              <a href="/login" class="btn btn-outline btn-lg">Login</a>
+            </div>
+          <% else %>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-4">
+              <a href="/cocktail_recipes" class="btn btn-primary btn-lg">Browse Cocktails</a>
+              <a href="/cocktail_recipes/new" class="btn btn-secondary btn-lg">Create Recipe</a>
+            </div>
+          <% end %>
 
+          <div class="alert alert-warning mt-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+            <span>You must be over 21 to use this site</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
   
      

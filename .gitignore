@@ -1,0 +1,22 @@
+# Bundler
+.bundle/
+vendor/bundle/
+
+# Node modules
+node_modules/
+
+# SQLite databases
+db/*.sqlite
+db/*.sqlite3
+db/*.sqlite-shm
+db/*.sqlite-wal
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+
+# Environment variables
+.env
+.env.local

@@ -1,15 +1,22 @@
-<div class="jumbotron text-white w-50" style="background-color: rgba(0,0,0, 0.90);" >
-<h3>Comment on <%=@cocktail_recipe.user.username%>'s <%=@cocktail_recipe.cocktail_name%>:</h3>
-<br>
-<div class="container" style="width:60%;">
-  <form class="form-center" action="/cocktail_recipes/<%=@cocktail_recipe.id%>/comments" method="POST">
-    <div class="form-group">
-      <label for="comment_content"><h4>Content:</h4></label>
-      <textarea type="text" id="comment_content" rows=5 class="form-control" name="comment[content]"></textarea>
+<div class="max-w-3xl mx-auto">
+  <div class="card bg-base-300 shadow-xl">
+    <div class="card-body">
+      <h1 class="text-3xl font-bold mb-2">Add a Comment</h1>
+      <p class="text-lg opacity-80 mb-6">Comment on <span class="text-primary"><%= @cocktail_recipe.user.username %></span>'s <span class="font-semibold"><%= @cocktail_recipe.cocktail_name %></span></p>
+
+      <form action="/cocktail_recipes/<%= @cocktail_recipe.id %>/comments" method="POST">
+        <div class="form-control mb-6">
+          <label class="label">
+            <span class="label-text text-lg font-semibold">Your Comment</span>
+          </label>
+          <textarea id="comment_content" name="comment[content]" class="textarea textarea-bordered h-32 w-full" placeholder="Share your thoughts..." required></textarea>
+        </div>
+
+        <div class="flex gap-4">
+          <button type="submit" class="btn btn-primary flex-1">Post Comment</button>
+          <a href="/cocktail_recipes/<%= @cocktail_recipe.id %>" class="btn btn-outline">Cancel</a>
+        </div>
+      </form>
     </div>
-    <div style="text-align: center">
-      <button type="submit" class="btn btn-primary">Create New Comment</button><br><br>
-    </div>
-  </form>
-</div>
+  </div>
 </div>

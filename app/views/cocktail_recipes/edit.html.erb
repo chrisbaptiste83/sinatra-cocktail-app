@@ -1,40 +1,60 @@
-<div class="jumbotron text-white w-50" style="background-color: rgba(0,0,0, 0.90);" > 
-<h1>Edit Cocktail Recipe</h1><br>
+<div class="max-w-3xl mx-auto">
+  <div class="card bg-base-300 shadow-xl">
+    <div class="card-body">
+      <h1 class="text-4xl font-bold mb-6">Edit Cocktail Recipe</h1>
 
-  <form method="POST" action="/cocktail_recipes/<%=@cocktail_recipe.id%>"> 
-  <input id="hidden" type="hidden" name="_method" value="PATCH">
-    <p>
-      <label for "cocktail name"><h2>Cocktail Name:</h2></label>
-      <input type="text" name="cocktail_name" id="cocktail_name" value="<%= @cocktail_recipe.cocktail_name%>" style='width:50%'> 
-    </p> 
+      <form method="POST" action="/cocktail_recipes/<%= @cocktail_recipe.id %>">
+        <input id="hidden" type="hidden" name="_method" value="PATCH">
 
-    <p>
-    <label for= "description"><h2> Description:</h2></label></br>
-    <textarea name="description" cols="60" rows="5" id ="description" style='width:50%'></textarea>
-    </p> 
+        <div class="form-control mb-4">
+          <label class="label">
+            <span class="label-text text-lg font-semibold">Cocktail Name</span>
+          </label>
+          <input type="text" name="cocktail_name" id="cocktail_name" value="<%= @cocktail_recipe.cocktail_name %>" class="input input-bordered w-full" required>
+        </div>
 
+        <div class="form-control mb-4">
+          <label class="label">
+            <span class="label-text text-lg font-semibold">Description</span>
+          </label>
+          <textarea name="description" id="description" class="textarea textarea-bordered h-24 w-full"><%= @cocktail_recipe.description %></textarea>
+        </div>
 
-    <p>
-      <label for "image url"><h2>Image URL:</h2></label>
-      <input type="text" name="image_url" id="image_url" value="<%= @cocktail_recipe.image_url%>" style='width:50%'> 
-    </p> 
+        <div class="form-control mb-4">
+          <label class="label">
+            <span class="label-text text-lg font-semibold">Image URL</span>
+          </label>
+          <input type="text" name="image_url" id="image_url" value="<%= @cocktail_recipe.image_url %>" class="input input-bordered w-full">
+        </div>
 
-    <p>
-      <label for= "ingredients"><h2> Ingredients:</h2></label>
-      <textarea name="ingredients" cols="60" rows="5" id ="ingredients" style='width:50%'> <%=@cocktail_recipe.ingredients%></textarea>
-    </p> 
-    <p>
-      <label for ="instructions"><h2>Instructions:<h2></label>
-      <textarea name="instructions" cols="60" rows="5" id ="instructions" style='width:50%'> <%=@cocktail_recipe.instructions%></textarea>
-    </p>
-    <button><h4>Submit Changes To This Recipe</h4></button>   
-  </form> 
-  <p>
-    <form method="POST" action="/cocktail_recipes/<%=@cocktail_recipe.id%>/delete">
-      <input id="hidden" type="hidden" name="_method" value="DELETE">
-      <button><h4>Delete Cocktail Recipe</h4></button>
-    </form> 
-  </p> 
+        <div class="form-control mb-4">
+          <label class="label">
+            <span class="label-text text-lg font-semibold">Ingredients</span>
+          </label>
+          <textarea name="ingredients" id="ingredients" class="textarea textarea-bordered h-32 w-full" required><%= @cocktail_recipe.ingredients %></textarea>
+        </div>
+
+        <div class="form-control mb-6">
+          <label class="label">
+            <span class="label-text text-lg font-semibold">Instructions</span>
+          </label>
+          <textarea name="instructions" id="instructions" class="textarea textarea-bordered h-32 w-full" required><%= @cocktail_recipe.instructions %></textarea>
+        </div>
+
+        <div class="flex gap-4 mb-4">
+          <button type="submit" class="btn btn-primary flex-1">Save Changes</button>
+          <a href="/cocktail_recipes/<%= @cocktail_recipe.id %>" class="btn btn-outline">Cancel</a>
+        </div>
+      </form>
+
+      <div class="divider"></div>
+
+      <form method="POST" action="/cocktail_recipes/<%= @cocktail_recipe.id %>/delete">
+        <input id="hidden" type="hidden" name="_method" value="DELETE">
+        <button type="submit" class="btn btn-error w-full" onclick="return confirm('Are you sure you want to delete this recipe?')">Delete Cocktail Recipe</button>
+      </form>
+    </div>
+  </div>
 </div>  
 
 

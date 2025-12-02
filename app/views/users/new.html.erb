@@ -1,29 +1,48 @@
-<div class="jumbotron text-white w-50" style="background-color: rgba(0,0,0, 0.90);" > 
-  <h1> Welcome to Chris's Cocktail Collection</h1><br> 
+<div class="max-w-md mx-auto">
+  <div class="card bg-base-300 shadow-xl">
+    <div class="card-body">
+      <h1 class="text-4xl font-bold mb-2 text-center">Join Us</h1>
+      <p class="text-center opacity-80 mb-6">Create your account to start sharing cocktail recipes</p>
 
-  <p><h2>Enter a username, email, and password to sign up:</h2></p><br> 
+      <form action="/signup" method="POST">
+        <div class="form-control mb-4">
+          <label class="label">
+            <span class="label-text text-lg font-semibold">Username</span>
+          </label>
+          <input type="text" name="username" placeholder="Choose a username" class="input input-bordered w-full" required>
+        </div>
 
-    <form action="/signup" method="POST"> 
-      <p>
-        <label for="username"><h2>Username:</h2></label><br>
-        <input type="text" name="username" placeholder="Username" style='width:50%'/>
-      </p> 
-      <p> 
-        <label for="email"><h2>Email:</h2></label><br>
-        <input type="text" name="email" placeholder="Email" style='width:50%'/> 
-      </p> 
-      <p> 
-        <label for ="password"><h2>Password:</h2></label><br>
-        <input type="password" name="password" placeholder="Password" style='width:50%'/> 
-      </p> 
-      <p> 
-        <label for ="password_confirmation"><h2>Confirm Password:</h2></label><br>
-        <input type="password" name="password_confirmation", placeholder="Password Confirmation" style='width:50%'/> 
-      </p> 
-      <button><h4>Sign Up</h4></button> 
-    </form><br>
+        <div class="form-control mb-4">
+          <label class="label">
+            <span class="label-text text-lg font-semibold">Email</span>
+          </label>
+          <input type="email" name="email" placeholder="your.email@example.com" class="input input-bordered w-full" required>
+        </div>
 
-  <p><h3>Already have an account? <a href="/login">Log In</a> here.</h3></p>
+        <div class="form-control mb-4">
+          <label class="label">
+            <span class="label-text text-lg font-semibold">Password</span>
+          </label>
+          <input type="password" name="password" placeholder="Create a password" class="input input-bordered w-full" required>
+        </div>
+
+        <div class="form-control mb-6">
+          <label class="label">
+            <span class="label-text text-lg font-semibold">Confirm Password</span>
+          </label>
+          <input type="password" name="password_confirmation" placeholder="Confirm your password" class="input input-bordered w-full" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-full mb-4">Sign Up</button>
+      </form>
+
+      <div class="divider">OR</div>
+
+      <p class="text-center">
+        Already have an account? <a href="/login" class="link link-primary font-semibold">Log In</a>
+      </p>
+    </div>
+  </div>
 </div>
       
   

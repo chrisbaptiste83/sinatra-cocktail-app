@@ -1,13 +1,44 @@
-<div class="jumbotron text-white w-50" style="background-color: rgba(0,0,0, 0.90);" > 
-<h1>Cocktail Recipes:</h1> 
-</div>
+<div class="max-w-7xl mx-auto">
+  <div class="text-center mb-8">
+    <h1 class="text-5xl font-bold mb-2">Cocktail Collection</h1>
+    <p class="text-lg opacity-80">Explore our amazing collection of cocktail recipes</p>
+  </div>
 
-  <% @cocktail_recipes.each do |cocktail_recipe| %> 
-    <div class="jumbotron text-white w-50" style="background-color: rgba(0,0,0, 0.90);" >     
-      <p><br><h2><a href="/cocktail_recipes/<%=cocktail_recipe.id%>" style="color: #f5f5f5"><%=cocktail_recipe.cocktail_name%></a></h2></br>
-      <p><img src="<%= cocktail_recipe.image_url%>" alt="image" style="width: 220px"></p><br> 
-      <h4><%=cocktail_recipe.description%></h4><br> 
-      <p><h4>created by: <a href="/users/<%= cocktail_recipe.user.username%>"><%= cocktail_recipe.user.username %></a></h4></p>
-    </div>  
-  <% end %>  
+  <div class="flex justify-between items-center mb-6">
+    <div class="badge badge-lg badge-primary">
+      <%= @cocktail_recipes.count %> Cocktails Found
+    </div>
+    <a href="/cocktail_recipes/new" class="btn btn-primary">Create New Cocktail</a>
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% @cocktail_recipes.each do |cocktail_recipe| %>
+      <div class="card bg-base-300 shadow-xl hover:shadow-2xl transition-shadow">
+        <figure class="px-4 pt-4">
+          <% if cocktail_recipe.image_url && !cocktail_recipe.image_url.empty? %>
+            <img src="<%= cocktail_recipe.image_url %>" alt="<%= cocktail_recipe.cocktail_name %>" class="rounded-xl w-full h-48 object-cover">
+          <% else %>
+            <div class="rounded-xl w-full h-48 bg-base-200 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
+            </div>
+          <% end %>
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">
+            <a href="/cocktail_recipes/<%= cocktail_recipe.id %>" class="hover:text-primary transition-colors">
+              <%= cocktail_recipe.cocktail_name %>
+            </a>
+          </h2>
+          <p class="text-sm opacity-80 line-clamp-3"><%= cocktail_recipe.description %></p>
+          <div class="card-actions justify-between items-center mt-4">
+            <div class="text-xs opacity-70">
+              by <a href="/users/<%= cocktail_recipe.user.username %>" class="link link-hover"><%= cocktail_recipe.user.username %></a>
+            </div>
+            <a href="/cocktail_recipes/<%= cocktail_recipe.id %>" class="btn btn-primary btn-sm">View Recipe</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>  
           

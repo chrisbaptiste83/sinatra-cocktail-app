@@ -1,25 +1,30 @@
-<div class="jumbotron text-white w-50" style="background-color: rgba(0,0,0, 0.90);" >
-<a href="/cocktail_recipes/<%=@cocktail_recipe_id%>"><button type="button" class="btn btn-link disabled">Back to Cocktail</button></a>
-    <br><br>
-    <div style="text-align: center">
-      <h4>Edit Your Comment</h4>
-    </div><br>
-    <div class="container" style="width:60%;">
-      <form class="form-center" action="/cocktail_recipes/<%=@cocktail_recipe_id%>/comments/<%=@comment.id%>" method="POST">
+<div class="max-w-3xl mx-auto">
+  <div class="card bg-base-300 shadow-xl">
+    <div class="card-body">
+      <h1 class="text-3xl font-bold mb-6">Edit Your Comment</h1>
+
+      <form action="/cocktail_recipes/<%= @cocktail_recipe_id %>/comments/<%= @comment.id %>" method="POST">
         <input type="hidden" id="hidden" name="_method" value="PATCH">
-        <div class="form-group">
-          <label for="comment_content">Content</label>
-          <input type="text" id="comment_content" class="form-control" name="comment[content]" value="<%= @comment.content %>"></input>
+
+        <div class="form-control mb-6">
+          <label class="label">
+            <span class="label-text text-lg font-semibold">Comment Content</span>
+          </label>
+          <textarea id="comment_content" name="comment[content]" class="textarea textarea-bordered h-32 w-full" required><%= @comment.content %></textarea>
         </div>
-        <div style="text-align: center">
-          <button type="submit" class="btn btn-primary">Save Changes</button>
-        </div>
-      </form><br>
-      <form action="/cocktail_recipes/<%=@cocktail_recipe_id%>/comments/<%=@comment.id%>/delete" method="POST">
-        <input type="hidden" id="hidden" name="_method" value="DELETE">
-        <div style="text-align: center">
-          <button type="submit" class="btn btn-warning">Delete Comment</button>
+
+        <div class="flex gap-4 mb-4">
+          <button type="submit" class="btn btn-primary flex-1">Save Changes</button>
+          <a href="/cocktail_recipes/<%= @cocktail_recipe_id %>" class="btn btn-outline">Cancel</a>
         </div>
       </form>
-    </div> 
+
+      <div class="divider"></div>
+
+      <form action="/cocktail_recipes/<%= @cocktail_recipe_id %>/comments/<%= @comment.id %>/delete" method="POST">
+        <input type="hidden" id="hidden" name="_method" value="DELETE">
+        <button type="submit" class="btn btn-error w-full" onclick="return confirm('Are you sure you want to delete this comment?')">Delete Comment</button>
+      </form>
     </div>
+  </div>
+</div>

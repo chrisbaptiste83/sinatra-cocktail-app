@@ -1,34 +1,52 @@
-<div class="jumbotron text-white w-50" style="background-color: rgba(0,0,0, 0.90);" > 
-<h1>Create a New Cocktail Recipe</h1><br>
+<div class="max-w-3xl mx-auto">
+  <div class="card bg-base-300 shadow-xl">
+    <div class="card-body">
+      <h1 class="text-4xl font-bold mb-6">Create a New Cocktail Recipe</h1>
 
-	<form action="/cocktail_recipes" method="POST">
-    <p>
-      <label for "cocktail name"><h2>Cocktail Name:</h2></label></br>
-      <input type="text" name="cocktail_name" id="cocktail_name" style='width:50%' >
-    </p> 
+      <form action="/cocktail_recipes" method="POST">
+        <div class="form-control mb-4">
+          <label class="label">
+            <span class="label-text text-lg font-semibold">Cocktail Name</span>
+          </label>
+          <input type="text" name="cocktail_name" id="cocktail_name" class="input input-bordered w-full" placeholder="e.g., Margarita" required>
+        </div>
 
-    <p>
-    <label for= "description"><h2> Description:</h2></label></br>
-    <textarea name="description" cols="60" rows="5" id ="description" style='width:50%'></textarea>
-    </p> 
+        <div class="form-control mb-4">
+          <label class="label">
+            <span class="label-text text-lg font-semibold">Description</span>
+          </label>
+          <textarea name="description" id="description" class="textarea textarea-bordered h-24 w-full" placeholder="A brief description of your cocktail..."></textarea>
+        </div>
 
-    <p>
-    <label for "image url"><h2>Image URL:</h2></label></br>
-    <input type="text" name="image_url" id="image_url" style='width:50%' >
-    </p> 
+        <div class="form-control mb-4">
+          <label class="label">
+            <span class="label-text text-lg font-semibold">Image URL</span>
+          </label>
+          <input type="text" name="image_url" id="image_url" class="input input-bordered w-full" placeholder="https://example.com/image.jpg">
+        </div>
 
-    <p>
-      <label for= "ingredients"><h2> Ingredients:</h2></label></br>
-      <textarea name="ingredients" cols="60" rows="5" id ="ingredients" style='width:50%'></textarea>
-    </p> 
+        <div class="form-control mb-4">
+          <label class="label">
+            <span class="label-text text-lg font-semibold">Ingredients</span>
+          </label>
+          <textarea name="ingredients" id="ingredients" class="textarea textarea-bordered h-32 w-full" placeholder="List all ingredients..." required></textarea>
+        </div>
 
-    <p>
-      <label for ="instructions"><h2>Instructions:<h2></label></br>
-      <textarea name="instructions" cols="60" rows="5" id ="instructions" style='width:50%'></textarea> 
-    </p>
-    <button><h4>Create Cocktail Recipe</h4></button></br> 
-  </form> 
+        <div class="form-control mb-6">
+          <label class="label">
+            <span class="label-text text-lg font-semibold">Instructions</span>
+          </label>
+          <textarea name="instructions" id="instructions" class="textarea textarea-bordered h-32 w-full" placeholder="Step-by-step instructions..." required></textarea>
+        </div>
+
+        <div class="flex gap-4">
+          <button type="submit" class="btn btn-primary flex-1">Create Cocktail Recipe</button>
+          <a href="/cocktail_recipes" class="btn btn-outline">Cancel</a>
+        </div>
+      </form>
+    </div>
   </div>
+</div>
 
 
   

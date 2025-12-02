@@ -1,43 +1,97 @@
-<div class="jumbotron text-white w-50" style="background-color: rgba(0,0,0, 0.90);" > 
-  <h1><%= @cocktail_recipe.cocktail_name%></h1><br> 
-  <h5><%= @cocktail_recipe.description%></h5><br> 
+<div class="max-w-5xl mx-auto">
+  <div class="card bg-base-300 shadow-xl">
+    <div class="card-body">
+      <div class="flex justify-between items-start">
+        <div class="flex-1">
+          <h1 class="text-5xl font-bold mb-4"><%= @cocktail_recipe.cocktail_name %></h1>
+        </div>
+        <% if current_user == @cocktail_recipe.user %>
+          <div class="dropdown dropdown-end">
+            <label tabindex="0" class="btn btn-ghost btn-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path></svg>
+            </label>
+            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-200 rounded-box w-52">
+              <li><a href="/cocktail_recipes/<%= @cocktail_recipe.id %>/edit">Edit Recipe</a></li>
+            </ul>
+          </div>
+        <% end %>
+      </div>
 
-  <p><img src="<%= @cocktail_recipe.image_url%>" alt="image" style="width: 380px"></p><br>
+      <p class="text-xl mb-6"><%= @cocktail_recipe.description %></p>
 
-  <p>
-    <h3>Ingredients:</h3>
-  </p> 
-  <p>
-    <h4><%= @cocktail_recipe.ingredients%></h4>
-  </p>      
-  <p>
-    <h3>Instructions:</h3>
-  </p> 
-  <p>
-    <h4><%= @cocktail_recipe.instructions%></h4>
-  </p><br>
+      <% if @cocktail_recipe.image_url && !@cocktail_recipe.image_url.empty? %>
+        <figure class="mb-6">
+          <img src="<%= @cocktail_recipe.image_url %>" alt="<%= @cocktail_recipe.cocktail_name %>" class="rounded-xl w-full max-h-96 object-cover shadow-xl">
+        </figure>
+      <% end %>
 
-  <% if current_user == @cocktail_recipe.user%>
-    <p>
-      <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/edit"><h2>Edit This Recipe</h2></a> 
-    </p><br> 
-  <%end%> 
+      <div class="divider"></div>
 
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+            Ingredients
+          </h3>
+          <div class="prose prose-invert max-w-none">
+            <%= @cocktail_recipe.ingredients %>
+          </div>
+        </div>
 
+        <div>
+          <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+            Instructions
+          </h3>
+          <p class="text-base leading-relaxed"><%= @cocktail_recipe.instructions %></p>
+        </div>
+      </div>
 
-  <h4>Comments:</h4></br> 
-    
-    <% @comments.each do |comment| %> 
-      <p><%= comment.content %></p>
-        <p>
-          Posted by: <a href="/users/<%= comment.user.username%>"><%= comment.user.username %></a>
-        </p> 
-      <% if comment.user_id == current_user.id %>
-        <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/comments/<%=comment.id%>/edit" ><input type="button" class="btn " value="Edit Your Comment" /></a>      
-      <%end%><br>   
-    <%end%><br></br>   
-    
-  <a href="/cocktail_recipes/<%=@cocktail_recipe.id%>/comments/new" ><input type="button" class="btn btn-primary" value="New Comment" /></a>  
+      <div class="divider"></div>
+
+      <div class="flex justify-between items-center text-sm opacity-70">
+        <div>
+          Created by <a href="/users/<%= @cocktail_recipe.user.username %>" class="link"><%= @cocktail_recipe.user.username %></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card bg-base-300 shadow-xl mt-8">
+    <div class="card-body">
+      <h4 class="text-2xl font-bold mb-4">
+        Comments (<%= @comments.count %>)
+      </h4>
+
+      <div class="space-y-4 mb-6">
+        <% @comments.each do |comment| %>
+          <div class="card bg-base-200">
+            <div class="card-body p-4">
+              <p class="mb-2"><%= comment.content %></p>
+              <div class="flex justify-between items-center">
+                <div class="text-sm opacity-70">
+                  By <a href="/users/<%= comment.user.username %>" class="link"><%= comment.user.username %></a>
+                </div>
+                <% if comment.user_id == current_user.id %>
+                  <a href="/cocktail_recipes/<%= @cocktail_recipe.id %>/comments/<%= comment.id %>/edit" class="btn btn-ghost btn-xs">Edit</a>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="divider">Add a Comment</div>
+      <a href="/cocktail_recipes/<%= @cocktail_recipe.id %>/comments/new" class="btn btn-primary">New Comment</a>
+    </div>
+  </div>
+
+  <div class="flex justify-between mt-8">
+    <a href="/cocktail_recipes" class="btn btn-outline gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+      Back to Cocktails
+    </a>
+  </div>
 </div>    
       
 

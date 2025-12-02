@@ -1,14 +1,60 @@
-<div class="jumbotron text-white w-50" style="background-color: rgba(0,0,0, 0.90);" > 
-      <h2>View all Cocktail Recipes by <%=@user.username%>:</h2> 
-      <br></br>
-      <% @user.cocktail_recipes.each do |cocktail_recipe| %>
-        <h2> <a href="/cocktail_recipes/<%= cocktail_recipe.id %>"><%= cocktail_recipe.cocktail_name %></a> </h2>
-        <p>
-        <p><img src="<%= cocktail_recipe.image_url%>" alt="image" style="width: 220px"></p><br> 
-        </p>  
-        <h4><%=cocktail_recipe.description%></h4><br> 
-        <h5>Created on <%=cocktail_recipe.created_at_date%></h5>
+<div class="max-w-7xl mx-auto">
+  <div class="card bg-base-300 shadow-xl mb-8">
+    <div class="card-body">
+      <div class="flex items-center gap-4">
+        <div class="avatar placeholder">
+          <div class="bg-neutral text-neutral-content rounded-full w-20">
+            <span class="text-3xl"><%= @user.username[0].upcase %></span>
+          </div>
+        </div>
+        <div>
+          <h1 class="text-4xl font-bold"><%= @user.username %></h1>
+          <p class="text-lg opacity-80"><%= @user.cocktail_recipes.count %> Cocktail Recipes</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <%end%> 
+  <div class="text-center mb-8">
+    <h2 class="text-3xl font-bold">Cocktail Recipes by <%= @user.username %></h2>
+  </div>
+
+  <% if @user.cocktail_recipes.empty? %>
+    <div class="card bg-base-300 shadow-xl">
+      <div class="card-body text-center">
+        <p class="text-xl opacity-70">No cocktail recipes yet</p>
+      </div>
+    </div>
+  <% else %>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% @user.cocktail_recipes.each do |cocktail_recipe| %>
+        <div class="card bg-base-300 shadow-xl hover:shadow-2xl transition-shadow">
+          <figure class="px-4 pt-4">
+            <% if cocktail_recipe.image_url && !cocktail_recipe.image_url.empty? %>
+              <img src="<%= cocktail_recipe.image_url %>" alt="<%= cocktail_recipe.cocktail_name %>" class="rounded-xl w-full h-48 object-cover">
+            <% else %>
+              <div class="rounded-xl w-full h-48 bg-base-200 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
+              </div>
+            <% end %>
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">
+              <a href="/cocktail_recipes/<%= cocktail_recipe.id %>" class="hover:text-primary transition-colors">
+                <%= cocktail_recipe.cocktail_name %>
+              </a>
+            </h2>
+            <p class="text-sm opacity-80 line-clamp-3"><%= cocktail_recipe.description %></p>
+            <div class="card-actions justify-between items-center mt-4">
+              <div class="text-xs opacity-70">
+                Created <%= cocktail_recipe.created_at_date %>
+              </div>
+              <a href="/cocktail_recipes/<%= cocktail_recipe.id %>" class="btn btn-primary btn-sm">View Recipe</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
    

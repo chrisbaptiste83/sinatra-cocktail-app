@@ -1,22 +1,32 @@
-<div class="jumbotron text-white w-50" style="background-color: rgba(0,0,0, 0.90);" > 
-  <h1>Log In</h1> 
+<div class="max-w-md mx-auto">
+  <div class="card bg-base-300 shadow-xl">
+    <div class="card-body">
+      <h1 class="text-4xl font-bold mb-2 text-center">Log In</h1>
+      <p class="text-center opacity-80 mb-6">Enter your credentials to access your account</p>
 
-    <p><h2>Enter your username and password to log in:</h2></p><br> 
+      <form method="POST" action="/login">
+        <div class="form-control mb-4">
+          <label class="label">
+            <span class="label-text text-lg font-semibold">Username</span>
+          </label>
+          <input type="text" name="username" placeholder="Enter your username" class="input input-bordered w-full" required>
+        </div>
 
-      <form method="POST" action="/login"> 
-      
-          <p>
-            <label for ="username"><h2>Username:</h2></label><br>
-            <input type="text" name="username" placeholder="username" style='width:50%'/> 
-          </p> 
-          <p>
-            <label for ="password"><h2>Password:</h2></label><br>
-            <input type="password" name="password" placeholder="password" style='width:50%'/>
-          </p> 
+        <div class="form-control mb-6">
+          <label class="label">
+            <span class="label-text text-lg font-semibold">Password</span>
+          </label>
+          <input type="password" name="password" placeholder="Enter your password" class="input input-bordered w-full" required>
+        </div>
 
-          <button><h4>Log In</h4></button> 
+        <button type="submit" class="btn btn-primary w-full mb-4">Log In</button>
+      </form>
 
-      </form><br>
-      
-    <p><h3>If you don't have an account, you can <a href="/signup">Sign Up</a> now.</h3></p>
+      <div class="divider">OR</div>
+
+      <p class="text-center">
+        Don't have an account? <a href="/signup" class="link link-primary font-semibold">Sign Up</a>
+      </p>
+    </div>
   </div>
+</div>
